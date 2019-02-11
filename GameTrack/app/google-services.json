@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "254385078307",
+    "firebase_url": "https://gametrack-361b0.firebaseio.com",
+    "project_id": "gametrack-361b0",
+    "storage_bucket": "gametrack-361b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254385078307:android:d8a8233250de07b3",
+        "android_client_info": {
+          "package_name": "com.fullsail.christopherfortune.gametrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254385078307-c546q0cqnlt91i8mcoc9pr2rn02d90st.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fullsail.christopherfortune.gametrack",
+            "certificate_hash": "ec5925612050529ee3fdd5c02abe899a2ed3a84c"
+          }
+        },
+        {
+          "client_id": "254385078307-5sh9rc5n5afim2heqq4mts5urdkb5t5u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZOb9EGSc5BceGt5zgG2Sqhawtr3oTYX8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254385078307-5sh9rc5n5afim2heqq4mts5urdkb5t5u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
