@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.fullsail.christopherfortune.gametrack.R;
 
@@ -18,7 +19,7 @@ public class LoginFragment extends Fragment {
     public LoginFragmentInterface loginFragmentInterfaceListener;
 
     public interface LoginFragmentInterface{
-        void login();
+        void login(EditText emailEditText, EditText passwordEditText);
         void signUp();
     }
 
@@ -41,11 +42,14 @@ public class LoginFragment extends Fragment {
 
         View loginFragmentView = inflater.inflate(R.layout.fragment_login, container, false);
 
+        final EditText emailEditText = loginFragmentView.findViewById(R.id.email_login_edit_text);
+        final EditText passwordEditText = loginFragmentView.findViewById(R.id.password_login_edit_text);
+
         Button loginButton = loginFragmentView.findViewById(R.id.login_button);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginFragmentInterfaceListener.login();
+                loginFragmentInterfaceListener.login(emailEditText, passwordEditText);
             }
         });
 
