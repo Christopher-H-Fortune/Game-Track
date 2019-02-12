@@ -15,7 +15,10 @@ import com.fullsail.christopherfortune.gametrack.R;
 
 public class SignUpFragment extends Fragment {
 
-    public static final String TAG = "LoginFragment.TAG";
+    // String variable to reference the signUpFragment when displaying to activity
+    public static final String TAG = "SignUpFragment.TAG";
+
+    // LoginFragmentInterface variable to call the interface methods
     public SignUpFragmentInterface signUpFragmentInterfaceListener;
 
     public interface SignUpFragmentInterface{
@@ -30,7 +33,10 @@ public class SignUpFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
+        // If the context is an instance of the SignUpFragmentInterface
         if(context instanceof SignUpFragmentInterface){
+
+            // Set the signUpFragmentInterfaceListener to the context as a SignUpFragmentInterface
             signUpFragmentInterfaceListener = (SignUpFragmentInterface) context;
         }
     }
@@ -38,20 +44,30 @@ public class SignUpFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        // Get the fragment_signup to inflate to the view
         View signUpFragmentView = inflater.inflate(R.layout.fragment_signup, container, false);
 
-        Button createAccountButton = signUpFragmentView.findViewById(R.id.create_account_button);
-
+        // EditText to obtain the users email and password entered
         final EditText emailEditText = signUpFragmentView.findViewById(R.id.email_sign_up_edit_text);
         final EditText passwordEditText = signUpFragmentView.findViewById(R.id.password_sign_up_edit_text);
         final EditText verifyPasswordEditText = signUpFragmentView.findViewById(R.id.second_password_sign_up_edit_text);
+
+        // Get the create account button to allow the user create their account
+        Button createAccountButton = signUpFragmentView.findViewById(R.id.create_account_button);
+
+        // Set the onClickListener to the createAccountButton
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                /* Call the createAccount method passing the email, password, and verify password
+                 editText */
                 signUpFragmentInterfaceListener.createAccount(emailEditText, passwordEditText, verifyPasswordEditText);
             }
         });
 
+        // Return the signUpFragmentView
         return signUpFragmentView;
     }
 }
