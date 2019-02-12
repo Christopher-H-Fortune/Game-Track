@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.fullsail.christopherfortune.gametrack.R;
 
 public class GamesListFragment extends ListFragment {

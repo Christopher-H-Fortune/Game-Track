@@ -101,9 +101,6 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
                         // Send the user to the GamesListActivity
                         Intent gamesListIntent = new Intent(LoginActivity.this, GamesListActivity.class);
 
-                        // Put the users id as an extra to the intent created above
-                        gamesListIntent.putExtra("usersId", userID);
-
                         // Start the games list activity
                         startActivity(gamesListIntent);
                     }
@@ -228,9 +225,6 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
 
                                     // Send the user to the GamesListActivity
                                     Intent gamesListIntent = new Intent(LoginActivity.this, GamesListActivity.class);
-
-                                    // Put the users id as an extra to the intent created above
-                                    gamesListIntent.putExtra("usersId", userID);
 
                                     // Start the games list activity
                                     startActivity(gamesListIntent);
