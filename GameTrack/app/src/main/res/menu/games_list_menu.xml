@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="@string/add_game"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_add_24dp"
+        android:id="@+id/add_photo_menu_button"/>
+
+</menu>

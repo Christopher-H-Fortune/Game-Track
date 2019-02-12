@@ -1,5 +1,6 @@
 package com.fullsail.christopherfortune.gametrack.LoginSignUpActivity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.util.Patterns;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.fullsail.christopherfortune.gametrack.GamesListActivity.GamesListActivity;
 import com.fullsail.christopherfortune.gametrack.LoginSignUpFragments.LoginFragment;
 import com.fullsail.christopherfortune.gametrack.LoginSignUpFragments.SignUpFragment;
 import com.fullsail.christopherfortune.gametrack.R;
@@ -86,6 +88,25 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
 
                     // Display the message to the user
                     Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+
+                    // Get the current user signed in
+                    FirebaseUser user = mAuth.getCurrentUser();
+
+                    // If the user isn't null
+                    if(user != null) {
+
+                        // Get the userID
+                        String userID = user.getUid();
+
+                        // Send the user to the GamesListActivity
+                        Intent gamesListIntent = new Intent(LoginActivity.this, GamesListActivity.class);
+
+                        // Put the users id as an extra to the intent created above
+                        gamesListIntent.putExtra("usersId", userID);
+
+                        // Start the games list activity
+                        startActivity(gamesListIntent);
+                    }
 
                 // If the login wasn't successful
                 } else {
@@ -204,6 +225,15 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
 
                                     // Create the user's profile in the database using the user's id
                                     databaseReference.child("users").child(userID).setValue(userID);
+
+                                    // Send the user to the GamesListActivity
+                                    Intent gamesListIntent = new Intent(LoginActivity.this, GamesListActivity.class);
+
+                                    // Put the users id as an extra to the intent created above
+                                    gamesListIntent.putExtra("usersId", userID);
+
+                                    // Start the games list activity
+                                    startActivity(gamesListIntent);
                                 }
 
                             // If there was an error in creating the account

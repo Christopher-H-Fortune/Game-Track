@@ -8,4 +8,5 @@
     <string name="re_enter_password">Re-Enter Password</string>
     <string name="empty_games_image">Empty Games List Image</string>
     <string name="no_games_found">No Games Found</string>
+    <string name="add_game">Add Game</string>
 </resources>
