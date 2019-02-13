@@ -1,11 +1,13 @@
 package com.fullsail.christopherfortune.gametrack.AddGameActivity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 
 import com.fullsail.christopherfortune.gametrack.AddGameFragment.AddGameFragment;
 import com.fullsail.christopherfortune.gametrack.GameClass.Games;
+import com.fullsail.christopherfortune.gametrack.GamesListActivity.GamesListActivity;
 import com.fullsail.christopherfortune.gametrack.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -56,6 +58,12 @@ public class AddGameActivity extends AppCompatActivity implements AddGameFragmen
 
             // Create the user's profile in the database using the user's id
             databaseReference.child("users").child(userID).child("games").child(gameTitle).setValue(gameToSave);
+
+            // Intent to send the user back to the games list screen
+            Intent gamesListIntent = new Intent(AddGameActivity.this, GamesListActivity.class);
+
+            // Start the games list activity using the intent created above
+            startActivity(gamesListIntent);
         }
     }
 }
