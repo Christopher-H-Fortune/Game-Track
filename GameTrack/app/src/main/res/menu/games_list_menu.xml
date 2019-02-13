@@ -5,6 +5,6 @@
         android:title="@string/add_game"
         app:showAsAction="always"
         android:icon="@drawable/ic_add_24dp"
-        android:id="@+id/add_photo_menu_button"/>
+        android:id="@+id/add_game_menu_button"/>
 
 </menu>

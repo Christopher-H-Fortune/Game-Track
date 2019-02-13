@@ -9,4 +9,11 @@
     <string name="empty_games_image">Empty Games List Image</string>
     <string name="no_games_found">No Games Found</string>
     <string name="add_game">Add Game</string>
+    <string name="save_game">Save Game</string>
+    <string name="game_title">Game Title</string>
+    <string name="developer">Developer</string>
+    <string name="publisher">Publisher</string>
+    <string name="release_year">Release Year</string>
+    <string name="game_launcher">Game Launcher</string>
+    <string name="add_a_game">Add a Game</string>
 </resources>

@@ -13,14 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".LoginSignUpActivity.LoginActivity">
+        <activity android:name=".LoginSignUpActivity.LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GamesListActivity.GamesListActivity"></activity>
+        <activity android:name=".GamesListActivity.GamesListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddGameActivity.AddGameActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
