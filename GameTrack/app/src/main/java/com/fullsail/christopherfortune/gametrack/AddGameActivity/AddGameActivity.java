@@ -29,6 +29,7 @@ public class AddGameActivity extends AppCompatActivity implements AddGameFragmen
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
 
+        // Display the AddGameFragment to the user
         getSupportFragmentManager().beginTransaction().replace(R.id.add_game_frame_layout,  AddGameFragment.newInstance() ,AddGameFragment.TAG).commit();
     }
 
@@ -36,6 +37,7 @@ public class AddGameActivity extends AppCompatActivity implements AddGameFragmen
     @Override
     public void saveGame(EditText gameTitleEditText, EditText gameDeveloperEditText, EditText gamePublisherEditText, EditText gameReleaseYearEditText, EditText gameLauncherEditText) {
 
+        // Obtain the data the user entered to save to the firebase database
         String gameTitle = gameTitleEditText.getText().toString();
         String gameDeveloper = gameDeveloperEditText.getText().toString();
         String gamePublisher = gamePublisherEditText.getText().toString();
@@ -45,6 +47,7 @@ public class AddGameActivity extends AppCompatActivity implements AddGameFragmen
         // Get the current user signed in
         FirebaseUser user = mAuth.getCurrentUser();
 
+        // Create a game to save using the string variables above
         Games gameToSave = new Games(gameTitle, gameDeveloper, gamePublisher, gameReleaseYear, gameLauncher);
 
         // If the user isn't null
