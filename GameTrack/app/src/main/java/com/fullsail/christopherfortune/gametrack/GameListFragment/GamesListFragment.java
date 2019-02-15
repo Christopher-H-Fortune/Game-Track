@@ -10,6 +10,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
 import com.fullsail.christopherfortune.gametrack.R;
 
 public class GamesListFragment extends ListFragment {
@@ -22,6 +25,8 @@ public class GamesListFragment extends ListFragment {
 
     public interface GamesListFragmentInterface{
         void addGame();
+        void passListView(ListView gamesListView);
+        void viewGame(int gameChosen);
     }
 
     public static GamesListFragment newInstance(){
@@ -43,8 +48,9 @@ public class GamesListFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        // Return the inflated fragment_games_list to display in the frame layout
-        return inflater.inflate(R.layout.fragment_games_list, container, false);
+        // Return the fragment_games_list to display in the frame layout
+       return inflater.inflate(R.layout.fragment_games_list, container, false);
+
     }
 
     @Override
@@ -53,6 +59,25 @@ public class GamesListFragment extends ListFragment {
 
         // Set the fragment to have an options menu
         setHasOptionsMenu(true);
+
+        // If you can get the view
+        if (getView() != null){
+
+            // Get the list View to display the data
+            ListView listView = getView().findViewById(android.R.id.list);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    // Call the view game method passing the position chosen
+                    gamesListFragmentInterfaceListener.viewGame(position);
+                }
+            });
+
+            // Call the updateListView interface method passing the listView declared above
+            gamesListFragmentInterfaceListener.passListView(listView);
+        }
     }
 
     @Override

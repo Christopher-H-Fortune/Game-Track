@@ -4,10 +4,11 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+import android.widget.ListView;
 import com.fullsail.christopherfortune.gametrack.AddGameActivity.AddGameActivity;
 import com.fullsail.christopherfortune.gametrack.GameClass.Games;
 import com.fullsail.christopherfortune.gametrack.GameListFragment.GamesListFragment;
+import com.fullsail.christopherfortune.gametrack.MatchListActivity.MatchListActivity;
 import com.fullsail.christopherfortune.gametrack.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -16,9 +17,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
+import com.fullsail.christopherfortune.gametrack.GameListFragment.GamesListAdapter;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashMap;
 
 public class GamesListActivity extends AppCompatActivity implements GamesListFragment.GamesListFragmentInterface {
 
@@ -26,6 +27,7 @@ public class GamesListActivity extends AppCompatActivity implements GamesListFra
     public DatabaseReference mDatabaseReference;
     public FirebaseDatabase mFirebaseDatabase;
     public ArrayList<String> gamesArrayList = new ArrayList<>();
+    public ListView gamesListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,8 @@ public class GamesListActivity extends AppCompatActivity implements GamesListFra
                             gamesArrayList.add(gameTitle);
                         }
                     }
+
+                    updateGamesList();
                 }
 
                 @Override
@@ -78,7 +82,6 @@ public class GamesListActivity extends AppCompatActivity implements GamesListFra
                 }
             });
         }
-
         // Display the gamesListFragment
         getSupportFragmentManager().beginTransaction().replace(R.id.game_list_frame_layout, GamesListFragment.newInstance(), GamesListFragment.TAG).commit();
     }
@@ -92,4 +95,60 @@ public class GamesListActivity extends AppCompatActivity implements GamesListFra
         // Start the AddGameActivity with the intent created above
         startActivity(addGameIntent);
     }
+
+    private void updateGamesList(){
+        // String array to save the keys created above
+        String[] keys = new String[]{"keyGameTitle"};
+
+        // Int array to save the view id's to display the data of each game in the child views
+        int[] viewIDs = new int[]{R.id.game_name_text_view};
+
+        // ArrayList of type HashMap key string and value string
+        ArrayList<HashMap<String, String>> postDataCollection = new ArrayList<>();
+
+        // For every game in the gamesArrayList
+        for (String game : gamesArrayList) {
+
+            // HashMap to assign each value and key string pairs
+            HashMap<String, String> map = new HashMap<>();
+
+            // Assign the data to the keys
+            map.put("keyGameTitle", game);
+
+            // Add the HashMap to the Array List created above
+            postDataCollection.add(map);
+        }
+
+        // Create the Custom Adapter
+        GamesListAdapter listViewAdapter = new GamesListAdapter(this, postDataCollection, keys, viewIDs);
+
+        // Check that the gamesListView isn't null before setting the adapter
+        if(gamesListView != null){
+
+            // Set the gamesListView adapter to the custom adapter created above
+            gamesListView.setAdapter(listViewAdapter);
+        }
+    }
+
+    @Override
+    public void passListView(ListView gamesListView) {
+        this.gamesListView = gamesListView;
+    }
+
+    @Override
+    public void viewGame(int gameChosen) {
+
+        // Get the game chosen to pass in the intent
+        String gameChosenTitle = gamesArrayList.get(gameChosen);
+
+        // Intent to send the user to the selected game screen
+        Intent selectedGameIntent = new Intent(this, MatchListActivity.class);
+
+        // Put the gameChosenTitle as an extra in the intent created above
+        selectedGameIntent.putExtra("gameChosen", gameChosenTitle);
+
+        // Start the MatchListActivity with the intent created above
+        startActivity(selectedGameIntent);
+    }
+
 }

@@ -16,4 +16,5 @@
     <string name="release_year">Release Year</string>
     <string name="game_launcher">Game Launcher</string>
     <string name="add_a_game">Add a Game</string>
+    <string name="add_match">Add Match</string>
 </resources>
