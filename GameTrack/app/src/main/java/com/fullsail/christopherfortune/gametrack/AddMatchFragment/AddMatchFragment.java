@@ -1,35 +1,32 @@
-package com.fullsail.christopherfortune.gametrack.MatchListFragment;
+package com.fullsail.christopherfortune.gametrack.AddMatchFragment;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ListFragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
+import com.fullsail.christopherfortune.gametrack.MatchListFragment.MatchListFragment;
 import com.fullsail.christopherfortune.gametrack.R;
 
-public class MatchListFragment extends ListFragment {
-
+public class AddMatchFragment extends Fragment {
     // String variable to reference the GamesListFragment when displaying
-    public static final String TAG = "MatchListFragment.TAG";
+    public static final String TAG = "AddMatchFragment.TAG";
 
     // Variable to call the GamesListFragmentInterface methods
-    public MatchListFragmentInterface matchListFragmentInterfaceListener;
+    public AddMatchFragmentInterface addMatchFragmentInterfaceListener;
 
-    public interface MatchListFragmentInterface{
-        void passListView(ListView matchListView);
-        void addMatch();
+    public interface AddMatchFragmentInterface{
+        void saveMatch();
     }
 
-    public static MatchListFragment newInstance(){
-        return new MatchListFragment();
+    public static AddMatchFragment newInstance(){
+        return new AddMatchFragment();
     }
 
     @Override
@@ -37,28 +34,21 @@ public class MatchListFragment extends ListFragment {
         super.onAttach(context);
 
         // If the context is an instance of MatchListFragmentInterface
-        if(context instanceof MatchListFragmentInterface){
+        if(context instanceof AddMatchFragmentInterface){
 
             // Set the matchListFragmentInterfaceListener to the context as MatchListFragmentInterface
-            matchListFragmentInterfaceListener = (MatchListFragmentInterface)context;
+            addMatchFragmentInterfaceListener = (AddMatchFragmentInterface) context;
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View matchListFragmentView = inflater.inflate(R.layout.fragment_match_list, container, false);
+        View addMatchFragmentView = inflater.inflate(R.layout.fragment_add_match, container, false);
 
-        ListView matchListView = matchListFragmentView.findViewById(android.R.id.list);
 
-        matchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-        });
-
-        return matchListFragmentView;
+        return addMatchFragmentView;
     }
 
     @Override
@@ -74,17 +64,16 @@ public class MatchListFragment extends ListFragment {
         super.onCreateOptionsMenu(menu, inflater);
 
         // Display the add match menu to the user
-        inflater.inflate(R.menu.add_match_menu, menu);
+        inflater.inflate(R.menu.save_match_menu, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         // If the user presses add match button
-        if(item.getItemId() == R.id.add_match_menu_button){
+        if(item.getItemId() == R.id.save_match_menu_button){
 
-            // Call the addMatch interface method
-            matchListFragmentInterfaceListener.addMatch();
+            addMatchFragmentInterfaceListener.saveMatch();
         }
 
         return true;

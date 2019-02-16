@@ -17,4 +17,10 @@
     <string name="game_launcher">Game Launcher</string>
     <string name="add_a_game">Add a Game</string>
     <string name="add_match">Add Match</string>
+    <string name="map_name">Map Name</string>
+    <string name="save_match">Save Match</string>
+    <string name="kills">Kills</string>
+    <string name="deaths">Deaths</string>
+    <string name="main_weapon">Main Weapon</string>
+    <string name="secondary_weapon">Secondary Weapon</string>
 </resources>
