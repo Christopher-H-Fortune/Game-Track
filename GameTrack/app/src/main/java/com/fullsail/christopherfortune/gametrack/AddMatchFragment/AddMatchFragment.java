@@ -46,7 +46,7 @@ public class AddMatchFragment extends Fragment {
 
         View addMatchFragmentView = inflater.inflate(R.layout.fragment_add_match, container, false);
 
-
+        // Get the Edit text and Radio Button fields to get the data the user entered
 
         return addMatchFragmentView;
     }
