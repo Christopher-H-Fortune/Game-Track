@@ -16,19 +16,19 @@
     <string name="release_year">Release Year</string>
     <string name="game_launcher">Game Launcher</string>
     <string name="add_a_game">Add a Game</string>
-    <string name="add_match">Add Match</string>
     <string name="map_name">Map Name</string>
     <string name="save_match">Save Match</string>
     <string name="kills">Kills</string>
     <string name="deaths">Deaths</string>
     <string name="main_weapon">Main Weapon</string>
     <string name="secondary_weapon">Secondary Weapon</string>
-    <string name="grenades_used">Grenades Used</string>
-    <string name="win">Win</string>
     <string name="match_assists">Match Assists</string>
     <string name="grenades_used">Grenades Used</string>
     <string name="match_score">Match Score</string>
     <string name="win">Win</string>
     <string name="lose">Lose</string>
-    <string name="match_notes">Match Notes...</string>
+    <string name="match_notes">Match Notes…</string>
+    <string name="well_played">Well Played,</string>
+    <string name="add_match">Add Match</string>
+    <string name="match_length">Match Length</string>
 </resources>

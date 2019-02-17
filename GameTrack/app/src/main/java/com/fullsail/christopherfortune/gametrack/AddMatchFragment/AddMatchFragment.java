@@ -10,8 +10,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
-import com.fullsail.christopherfortune.gametrack.MatchListFragment.MatchListFragment;
 import com.fullsail.christopherfortune.gametrack.R;
 
 public class AddMatchFragment extends Fragment {
@@ -21,8 +23,32 @@ public class AddMatchFragment extends Fragment {
     // Variable to call the GamesListFragmentInterface methods
     public AddMatchFragmentInterface addMatchFragmentInterfaceListener;
 
+    private RadioButton winRadioButton;
+    private RadioButton loseRadioButton;
+    private EditText mapNameEditText;
+    private EditText matchLengthEditText;
+    private EditText killsEditText;
+    private EditText deathsEditText;
+    private EditText mainWeaponEditText;
+    private EditText secondaryWeaponEditText;
+    private EditText grenadesEditText;
+    private EditText matchScoreEditText;
+    private EditText matchAssistsEditText;
+    private EditText matchNotesEditText;
+
     public interface AddMatchFragmentInterface{
-        void saveMatch();
+        void saveMatch(RadioButton winRadioButton,
+                       RadioButton loseRadioButton,
+                       EditText mapNameEditText,
+                       EditText matchLengthEditText,
+                       EditText killsEditText,
+                       EditText deathsEditText,
+                       EditText mainWeaponEditText,
+                       EditText secondaryWeaponEditText,
+                       EditText grenadesEditText,
+                       EditText matchScoreEditText,
+                       EditText matchAssistEditText,
+                       EditText matchNotesEditText);
     }
 
     public static AddMatchFragment newInstance(){
@@ -47,6 +73,18 @@ public class AddMatchFragment extends Fragment {
         View addMatchFragmentView = inflater.inflate(R.layout.fragment_add_match, container, false);
 
         // Get the Edit text and Radio Button fields to get the data the user entered
+       winRadioButton = addMatchFragmentView.findViewById(R.id.win_radio_button);
+       loseRadioButton = addMatchFragmentView.findViewById(R.id.lose_radio_button);
+       mapNameEditText = addMatchFragmentView.findViewById(R.id.map_name_edit_text);
+       matchLengthEditText = addMatchFragmentView.findViewById(R.id.match_length_edit_text);
+       killsEditText = addMatchFragmentView.findViewById(R.id.kills_edit_text);
+       deathsEditText = addMatchFragmentView.findViewById(R.id.deaths_edit_text);
+       mainWeaponEditText = addMatchFragmentView.findViewById(R.id.main_weapon_edit_text);
+       secondaryWeaponEditText = addMatchFragmentView.findViewById(R.id.secondary_weapon_edit_text);
+       grenadesEditText = addMatchFragmentView.findViewById(R.id.grenades_used_edit_text);
+       matchScoreEditText = addMatchFragmentView.findViewById(R.id.match_score_edit_text);
+       matchAssistsEditText = addMatchFragmentView.findViewById(R.id.match_assist_edit_text);
+       matchNotesEditText = addMatchFragmentView.findViewById(R.id.match_notes_edit_text);
 
         return addMatchFragmentView;
     }
@@ -73,7 +111,41 @@ public class AddMatchFragment extends Fragment {
         // If the user presses add match button
         if(item.getItemId() == R.id.save_match_menu_button){
 
-            addMatchFragmentInterfaceListener.saveMatch();
+            // Make sure the user entered data into the text fields
+            if(mapNameEditText.getText().toString().trim().isEmpty() ||
+                    matchLengthEditText.getText().toString().trim().isEmpty() ||
+                    killsEditText.getText().toString().trim().isEmpty() ||
+                    deathsEditText.getText().toString().trim().isEmpty() ||
+                    mainWeaponEditText.getText().toString().trim().isEmpty() ||
+                    secondaryWeaponEditText.getText().toString().trim().isEmpty() ||
+                    grenadesEditText.getText().toString().trim().isEmpty() ||
+                    matchScoreEditText.getText().toString().trim().isEmpty() ||
+                    matchAssistsEditText.getText().toString().trim().isEmpty() ||
+                    matchNotesEditText.getText().toString().trim().isEmpty()){
+
+                // Ask the user to fill out all the data in the edit text fields
+                Toast.makeText(getContext(), "Please Fill out all the text fields.", Toast.LENGTH_SHORT).show();
+
+            // If no radio button is checked
+            } else if (!winRadioButton.isChecked() && !loseRadioButton.isChecked()){
+
+                // Ask the user to enter if they won or lost
+                Toast.makeText(getContext(), "Please check if you won or lost.", Toast.LENGTH_SHORT).show();
+            }
+
+            // Call the save match interface method
+            addMatchFragmentInterfaceListener.saveMatch(winRadioButton,
+                    loseRadioButton,
+                    mapNameEditText,
+                    matchLengthEditText,
+                    killsEditText,
+                    deathsEditText,
+                    mainWeaponEditText,
+                    secondaryWeaponEditText,
+                    grenadesEditText,
+                    matchScoreEditText,
+                    matchAssistsEditText,
+                    matchNotesEditText);
         }
 
         return true;
