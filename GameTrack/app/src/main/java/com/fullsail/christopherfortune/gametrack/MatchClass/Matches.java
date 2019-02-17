@@ -2,6 +2,7 @@ package com.fullsail.christopherfortune.gametrack.MatchClass;
 
 public class Matches {
 
+    private String matchDate;
     private boolean gameWon;
     private String mapName;
     private String matchLength;
@@ -14,7 +15,8 @@ public class Matches {
     private int matchAssists;
     private String matchNotes;
 
-    public Matches(boolean gameWon,
+    public Matches(String matchDate,
+                   boolean gameWon,
                    String mapName,
                    String matchLength,
                    int kills,
@@ -26,6 +28,7 @@ public class Matches {
                    int matchAssists,
                    String matchNotes){
 
+        this.matchDate = matchDate;
         this.gameWon = gameWon;
         this.mapName = mapName;
         this.matchLength = matchLength;
@@ -37,6 +40,10 @@ public class Matches {
         this.matchScore = matchScore;
         this.matchAssists = matchAssists;
         this.matchNotes = matchNotes;
+    }
+
+    public String getMatchDate() {
+        return matchDate;
     }
 
     public boolean isGameWon() {

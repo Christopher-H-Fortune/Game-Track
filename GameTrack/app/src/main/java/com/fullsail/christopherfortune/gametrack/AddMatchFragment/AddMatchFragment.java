@@ -131,23 +131,24 @@ public class AddMatchFragment extends Fragment {
 
                 // Ask the user to enter if they won or lost
                 Toast.makeText(getContext(), "Please check if you won or lost.", Toast.LENGTH_SHORT).show();
+            } else {
+
+                // Call the save match interface method
+                addMatchFragmentInterfaceListener.saveMatch(winRadioButton,
+                        loseRadioButton,
+                        mapNameEditText,
+                        matchLengthEditText,
+                        killsEditText,
+                        deathsEditText,
+                        mainWeaponEditText,
+                        secondaryWeaponEditText,
+                        grenadesEditText,
+                        matchScoreEditText,
+                        matchAssistsEditText,
+                        matchNotesEditText);
             }
 
-            // Call the save match interface method
-            addMatchFragmentInterfaceListener.saveMatch(winRadioButton,
-                    loseRadioButton,
-                    mapNameEditText,
-                    matchLengthEditText,
-                    killsEditText,
-                    deathsEditText,
-                    mainWeaponEditText,
-                    secondaryWeaponEditText,
-                    grenadesEditText,
-                    matchScoreEditText,
-                    matchAssistsEditText,
-                    matchNotesEditText);
         }
-
         return true;
     }
 }

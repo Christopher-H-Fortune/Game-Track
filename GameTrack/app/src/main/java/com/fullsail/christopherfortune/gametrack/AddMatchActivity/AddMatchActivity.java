@@ -15,6 +15,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class AddMatchActivity extends AppCompatActivity implements AddMatchFragment.AddMatchFragmentInterface {
 
@@ -51,8 +57,10 @@ public class AddMatchActivity extends AppCompatActivity implements AddMatchFragm
         // Make sure the user isn't null
         if(user != null){
 
+            // Set the default value of game won to false
             boolean gameWon = false;
 
+            // If the win radio button is checked
             if(winRadioButton.isChecked()){
                 gameWon = true;
             }
@@ -73,8 +81,17 @@ public class AddMatchActivity extends AppCompatActivity implements AddMatchFragm
             int matchAssist = Integer.parseInt(matchAssistString);
             String matchNotesString = matchNotesEditText.getText().toString().trim();
 
+            Calendar calendar = Calendar.getInstance();
+
+            Date currentDate = calendar.getTime();
+
+            DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyy HH:mm:ss");
+
+            String dateString = dateFormat.format(currentDate);
+
             // Store the data above into a Matches class object
-            Matches matchEntered = new Matches(gameWon,
+            Matches matchEntered = new Matches(dateString,
+                    gameWon,
                     mapName,
                     matchLength,
                     killsCount,
@@ -93,7 +110,7 @@ public class AddMatchActivity extends AppCompatActivity implements AddMatchFragm
             DatabaseReference databaseReference = mFirebaseDatabase.getReference();
 
             // Set the reference on where to store match data
-            databaseReference.child("users").child(userID).child("games").child(gameChosen).child("matches").setValue(matchEntered);
+            databaseReference.child("users").child(userID).child("games").child(gameChosen).child("matches").child(dateString).setValue(matchEntered);
 
             Toast.makeText(this, "Match Saved", Toast.LENGTH_SHORT).show();
 
