@@ -9,7 +9,9 @@
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundColor" />
+        android:background="@color/backgroundColor"
+        android:divider="@android:color/white"
+        android:dividerHeight="1dp"/>
 
     <ViewStub
         android:id="@android:id/empty"

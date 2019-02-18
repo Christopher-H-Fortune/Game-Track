@@ -1,27 +1,54 @@
 package com.fullsail.christopherfortune.gametrack.MatchListFragment;
 
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
-public class MatchListAdapter extends BaseAdapter {
-    @Override
-    public int getCount() {
-        return 0;
+import com.fullsail.christopherfortune.gametrack.MatchClass.Matches;
+import com.fullsail.christopherfortune.gametrack.MatchListClass.MatchesListClass;
+import com.fullsail.christopherfortune.gametrack.R;
+
+import java.util.ArrayList;
+
+public class MatchListAdapter extends ArrayAdapter<MatchesListClass> {
+
+    private Context context;
+    private int resource;
+    private ArrayList<MatchesListClass> matchesArrayList;
+
+    public MatchListAdapter(Context context, int resource, ArrayList<MatchesListClass> matchesArrayList){
+        super(context, resource, matchesArrayList);
+        this.context = context;
+        this.resource = resource;
+        this.matchesArrayList = matchesArrayList;
     }
 
+    @NonNull
     @Override
-    public Object getItem(int position) {
-        return null;
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        View listRowView = layoutInflater.inflate(R.layout.matches_list_row, null);
+
+        TextView mapNameTextView = listRowView.findViewById(R.id.map_name_text_view);
+        TextView matchDateTextView = listRowView.findViewById(R.id.match_date_text_view);
+        TextView assistsTextView = listRowView.findViewById(R.id.assists_text_view);
+        TextView killsTextView = listRowView.findViewById(R.id.kills_text_view);
+        TextView scoreTextView = listRowView.findViewById(R.id.score_text_view);
+
+        mapNameTextView.setText(matchesArrayList.get(position).getMapName());
+        matchDateTextView.setText(matchesArrayList.get(position).getDate());
+        assistsTextView.setText(context.getResources().getString(R.string.assist_text_view, matchesArrayList.get(position).getAssists()));
+        killsTextView.setText(context.getResources().getString(R.string.kills_text_view, matchesArrayList.get(position).getKills()));
+        scoreTextView.setText(context.getResources().getString(R.string.score_text_view, matchesArrayList.get(position).getScore()));
+
+        return listRowView;
     }
 }

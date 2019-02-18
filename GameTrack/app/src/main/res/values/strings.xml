@@ -31,4 +31,10 @@
     <string name="well_played">Well Played,</string>
     <string name="add_match">Add Match</string>
     <string name="match_length">Match Length</string>
+    <string name="kills_icon">Kills Icon</string>
+    <string name="assists_icon">Assists Icon</string>
+    <string name="score_icon">Score Icon</string>
+    <string name="assist_text_view">%1$d Assists</string>
+    <string name="kills_text_view">%1$d Kills</string>
+    <string name="score_text_view">%1$d Score</string>
 </resources>

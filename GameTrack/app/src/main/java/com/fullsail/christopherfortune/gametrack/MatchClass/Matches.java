@@ -15,6 +15,10 @@ public class Matches {
     private int matchAssists;
     private String matchNotes;
 
+    public Matches(){
+
+    }
+
     public Matches(String matchDate,
                    boolean gameWon,
                    String mapName,

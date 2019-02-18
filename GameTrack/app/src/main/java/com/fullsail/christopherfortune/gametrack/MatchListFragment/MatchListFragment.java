@@ -51,6 +51,8 @@ public class MatchListFragment extends ListFragment {
 
         ListView matchListView = matchListFragmentView.findViewById(android.R.id.list);
 
+        matchListFragmentInterfaceListener.passListView(matchListView);
+
         matchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
