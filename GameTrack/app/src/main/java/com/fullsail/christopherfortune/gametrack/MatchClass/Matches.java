@@ -93,4 +93,52 @@ public class Matches {
     public String getMatchNotes() {
         return matchNotes;
     }
+
+    public void setMatchDate(String matchDate) {
+        this.matchDate = matchDate;
+    }
+
+    public void setGameWon(boolean gameWon) {
+        this.gameWon = gameWon;
+    }
+
+    public void setMapName(String mapName) {
+        this.mapName = mapName;
+    }
+
+    public void setMatchLength(String matchLength) {
+        this.matchLength = matchLength;
+    }
+
+    public void setKills(int kills) {
+        this.kills = kills;
+    }
+
+    public void setDeaths(int deaths) {
+        this.deaths = deaths;
+    }
+
+    public void setMainWeapon(String mainWeapon) {
+        this.mainWeapon = mainWeapon;
+    }
+
+    public void setSecondaryWeapon(String secondaryWeapon) {
+        this.secondaryWeapon = secondaryWeapon;
+    }
+
+    public void setGrenades(String grenades) {
+        this.grenades = grenades;
+    }
+
+    public void setMatchScore(int matchScore) {
+        this.matchScore = matchScore;
+    }
+
+    public void setMatchAssists(int matchAssists) {
+        this.matchAssists = matchAssists;
+    }
+
+    public void setMatchNotes(String matchNotes) {
+        this.matchNotes = matchNotes;
+    }
 }
