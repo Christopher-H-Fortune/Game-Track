@@ -4,7 +4,7 @@
     <string name="e_mail">E-mail</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="sign_up">Sign Up</string>
+    <string name="sign_up">Don\'t Have an Account? Click Here</string>
     <string name="re_enter_password">Re-Enter Password</string>
     <string name="empty_games_image">Empty Games List Image</string>
     <string name="no_games_found">No Games Found</string>
@@ -37,4 +37,6 @@
     <string name="assist_text_view">%1$d Assists</string>
     <string name="kills_text_view">%1$d Kills</string>
     <string name="score_text_view">%1$d Score</string>
+    <string name="secondary">Secondary</string>
+    <string name="win_or_lose">Win or Loss</string>
 </resources>

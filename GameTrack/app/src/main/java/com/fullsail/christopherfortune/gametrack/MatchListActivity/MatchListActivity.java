@@ -1,5 +1,6 @@
 package com.fullsail.christopherfortune.gametrack.MatchListActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.fullsail.christopherfortune.gametrack.MatchListClass.MatchesListClass
 import com.fullsail.christopherfortune.gametrack.MatchListFragment.MatchListAdapter;
 import com.fullsail.christopherfortune.gametrack.MatchListFragment.MatchListFragment;
 import com.fullsail.christopherfortune.gametrack.R;
+import com.fullsail.christopherfortune.gametrack.SelectedMatchActivity.SelectedMatchActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -124,6 +126,15 @@ public class MatchListActivity extends AppCompatActivity implements MatchListFra
 
         // Start the activity with the intent created above
         startActivity(addMatchIntent);
+    }
+
+    @Override
+    public void viewMatch(int matchChosen) {
+
+        Intent selectedMatchIntent = new Intent(this, SelectedMatchActivity.class);
+        selectedMatchIntent.putExtra("gameChosen", gameChosen);
+        selectedMatchIntent.putExtra("matchChosenDate", matchesArrayList.get(matchChosen).getDate());
+        startActivity(selectedMatchIntent);
     }
 
     private void updateMatchesList(){

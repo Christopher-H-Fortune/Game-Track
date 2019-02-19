@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import com.fullsail.christopherfortune.gametrack.R;
 
 public class MatchListFragment extends ListFragment {
@@ -26,6 +25,7 @@ public class MatchListFragment extends ListFragment {
     public interface MatchListFragmentInterface{
         void passListView(ListView matchListView);
         void addMatch();
+        void viewMatch(int matchChosen);
     }
 
     public static MatchListFragment newInstance(){
@@ -47,20 +47,7 @@ public class MatchListFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View matchListFragmentView = inflater.inflate(R.layout.fragment_match_list, container, false);
-
-        ListView matchListView = matchListFragmentView.findViewById(android.R.id.list);
-
-        matchListFragmentInterfaceListener.passListView(matchListView);
-
-        matchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-
-        return matchListFragmentView;
+        return inflater.inflate(R.layout.fragment_match_list, container, false);
     }
 
     @Override
@@ -69,6 +56,19 @@ public class MatchListFragment extends ListFragment {
 
         // Set the fragment to have an options menu
         setHasOptionsMenu(true);
+
+        if(getView() != null){
+            ListView matchListView = getView().findViewById(android.R.id.list);
+
+            matchListFragmentInterfaceListener.passListView(matchListView);
+
+            matchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    matchListFragmentInterfaceListener.viewMatch(position);
+                }
+            });
+        }
     }
 
     @Override

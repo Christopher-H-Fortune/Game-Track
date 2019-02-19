@@ -29,7 +29,8 @@
             android:name=".AddGameActivity.AddGameActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".MatchListActivity.MatchListActivity" />
-        <activity android:name=".AddMatchActivity.AddMatchActivity"></activity>
+        <activity android:name=".AddMatchActivity.AddMatchActivity" />
+        <activity android:name=".SelectedMatchActivity.SelectedMatchActivity"></activity>
     </application>
 
 </manifest>

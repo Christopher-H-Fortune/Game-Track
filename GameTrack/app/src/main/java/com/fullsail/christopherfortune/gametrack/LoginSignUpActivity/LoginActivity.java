@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setTitle("Login");
 
         // Set the instance of the Firebase auth and database
         mAuth = FirebaseAuth.getInstance();

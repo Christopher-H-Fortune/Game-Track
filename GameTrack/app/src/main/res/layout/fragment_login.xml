@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/login_button"
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -68,13 +68,15 @@
 
     <Button
         android:id="@+id/sign_up_button"
-        android:layout_width="wrap_content"
+        android:layout_width="243dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorAccent"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/sign_up_button"
         android:text="@string/sign_up"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_button" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
