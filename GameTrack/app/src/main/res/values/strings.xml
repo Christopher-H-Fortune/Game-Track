@@ -39,4 +39,6 @@
     <string name="score_text_view">%1$d Score</string>
     <string name="secondary">Secondary</string>
     <string name="win_or_lose">Win or Loss</string>
+    <string name="match_won">Match Won</string>
+    <string name="match_lost">Match Lost</string>
 </resources>

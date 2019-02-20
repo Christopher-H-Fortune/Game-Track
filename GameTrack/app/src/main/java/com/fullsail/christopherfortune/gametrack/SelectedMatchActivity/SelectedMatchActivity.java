@@ -111,6 +111,8 @@ public class SelectedMatchActivity extends AppCompatActivity implements Selected
                             }
                         }
                     }
+
+                    displayData();
                 }
 
                 @Override
@@ -138,5 +140,55 @@ public class SelectedMatchActivity extends AppCompatActivity implements Selected
         this.grenadesEditText = grenadesEditText;
         this.winLossEditText = winLossEditText;
         this.matchNotesEditText = matchNotesEditText;
+    }
+
+    public void displayData(){
+        if(matchChosen != null){
+
+            if(mapNameTextView != null){
+                mapNameTextView.setText(matchChosen.getMapName());
+            }
+
+            if(matchDateTextView != null){
+                matchDateTextView.setText(matchChosen.getMatchDate());
+            }
+
+            if(matchAssistTextView != null){
+                matchAssistTextView.setText(getString(R.string.assist_text_view, matchChosen.getMatchAssists()));
+            }
+
+            if(matchKillsTextView != null){
+                matchKillsTextView.setText(getString(R.string.kills_text_view, matchChosen.getKills()));
+            }
+
+            if(matchScoreTextView != null){
+                matchScoreTextView.setText(getString(R.string.score_text_view, matchChosen.getMatchScore()));
+            }
+
+            if(mainWeaponEditText != null){
+                mainWeaponEditText.setText(matchChosen.getMainWeapon());
+            }
+
+            if(secondaryEditText != null){
+                secondaryEditText.setText(matchChosen.getSecondaryWeapon());
+            }
+
+            if(grenadesEditText != null){
+                grenadesEditText.setText(matchChosen.getGrenades());
+            }
+
+            if(winLossEditText != null){
+
+                if(matchChosen.isGameWon()){
+                    winLossEditText.setText(getString(R.string.match_won));
+                } else {
+                    winLossEditText.setText(getString(R.string.match_lost));
+                }
+            }
+
+            if(matchNotesEditText != null){
+                matchNotesEditText.setText(matchChosen.getMatchNotes());
+            }
+        }
     }
 }
