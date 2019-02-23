@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.fullsail.christopherfortune.gametrack.AddGameActivity.AddGameActivity;
 import com.fullsail.christopherfortune.gametrack.AddMatchActivity.AddMatchActivity;
 import com.fullsail.christopherfortune.gametrack.AddMatchFragment.AddMatchFragment;
+import com.fullsail.christopherfortune.gametrack.CompareMatchesActivity.CompareMatchesActivity;
 import com.fullsail.christopherfortune.gametrack.GameClass.Games;
 import com.fullsail.christopherfortune.gametrack.MatchClass.Matches;
 import com.fullsail.christopherfortune.gametrack.MatchListClass.MatchesListClass;
@@ -102,6 +105,17 @@ public class MatchListActivity extends AppCompatActivity implements MatchListFra
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                }
+            });
+
+            ImageButton compareMatchesImageButton = findViewById(R.id.compare_image_button);
+            compareMatchesImageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent compareMatchesIntent = new Intent(MatchListActivity.this, CompareMatchesActivity.class);
+                    compareMatchesIntent.putExtra("gameChosen", gameChosen);
+                    startActivity(compareMatchesIntent);
                 }
             });
 

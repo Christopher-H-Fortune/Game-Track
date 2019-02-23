@@ -30,7 +30,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".MatchListActivity.MatchListActivity" />
         <activity android:name=".AddMatchActivity.AddMatchActivity" />
-        <activity android:name=".SelectedMatchActivity.SelectedMatchActivity"></activity>
+        <activity android:name=".SelectedMatchActivity.SelectedMatchActivity" />
+        <activity android:name=".CompareMatchesActivity.CompareMatchesActivity"/>
     </application>
 
 </manifest>

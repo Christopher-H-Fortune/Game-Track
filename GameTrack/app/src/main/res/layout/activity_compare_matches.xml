@@ -4,17 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
-    tools:context=".MatchListActivity.MatchListActivity">
+    tools:context=".CompareMatchesActivity.CompareMatchesActivity">
 
     <FrameLayout
-        android:id="@+id/match_list_frame_layout"
+        android:id="@+id/compare_matches_frame_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/menu_frame_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,4 +112,5 @@
                 app:layout_constraintTop_toBottomOf="@+id/career_image_button" />
         </android.support.constraint.ConstraintLayout>
     </FrameLayout>
+
 </android.support.constraint.ConstraintLayout>

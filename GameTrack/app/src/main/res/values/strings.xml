@@ -41,4 +41,13 @@
     <string name="win_or_lose">Win or Loss</string>
     <string name="match_won">Match Won</string>
     <string name="match_lost">Match Lost</string>
+    <string name="matches_list_icon">Matches List Icon</string>
+    <string name="matches">Matches</string>
+    <string name="compare_matches_icon">Compare Matches Icon</string>
+    <string name="compare">Compare</string>
+    <string name="carrer_icon">Carrer Icon</string>
+    <string name="career">Career</string>
+    <string name="pick_your_first_match">Pick Your First Match</string>
+    <string name="pick_your_second_match">Pick Your Second Match</string>
+    <string name="compare_matches">Compare Matches</string>
 </resources>
