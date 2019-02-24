@@ -48,8 +48,13 @@
 ** Match List Screen ** 
 
 - Plus action button to allow the user to go Add Match Screen.
+- Displays the matches the user has entered in a list view.
+- Allows the user select a match and view it's details.
 
 ** Add Match Screen ** 
 
 - Allows user to enter in a match object to store to the Firebase Database of the selected game.
 - Pressing save acition button allows the user to save the Match to the database and send the user back to the match list screen.
+
+** Compare Games Screen **
+- Allow user to select between two matches to compare their data.

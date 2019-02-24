@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -26,16 +28,19 @@ public class CompareMatchesActivity extends AppCompatActivity implements Compare
     public FirebaseAuth mAuth;
     public DatabaseReference mDatabaseReference;
     public FirebaseDatabase mFirebaseDatabase;
-    public ArrayList<String> matchesArrayList;
+    public ArrayList<String> spinnerArrayList;
+    public ArrayList<String> matchesDatesArrayList;
     public Spinner firstMatchSpinner;
     public Spinner secondMatchSpinner;
+    public int firstMatchChosen;
+    public int secondMatchChosen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare_matches);
 
-        matchesArrayList = new ArrayList<>();
+        spinnerArrayList = new ArrayList<>();
 
         // Get the starting intent
         Intent startingIntent = getIntent();
@@ -81,8 +86,11 @@ public class CompareMatchesActivity extends AppCompatActivity implements Compare
                         String mapName = matches.getMapName();
                         String matchDate = matches.getMatchDate();
 
-                        // Add the map name and date as a string to the matches arrayList
-                        matchesArrayList.add(mapName + ", " + matchDate);
+                        // Add the map name and date as a string to the spinnerArrayList
+                        spinnerArrayList.add(mapName + ", " + matchDate);
+
+                        // Add the date to the matchesDatesArrayList
+                        matchesDatesArrayList.add(matchDate);
                     }
                 }
 
@@ -100,12 +108,40 @@ public class CompareMatchesActivity extends AppCompatActivity implements Compare
     }
 
     private void updateSpinners(){
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, matchesArrayList);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, spinnerArrayList);
 
         if(firstMatchSpinner != null && secondMatchSpinner != null){
 
             firstMatchSpinner.setAdapter(spinnerAdapter);
             secondMatchSpinner.setAdapter(spinnerAdapter);
+
+            firstMatchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    // Get the position chosen from the spinner
+                    firstMatchChosen = position;
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            secondMatchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    // Get the position chosen from the spinner
+                    secondMatchChosen = position;
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
         }
     }
 
@@ -113,5 +149,10 @@ public class CompareMatchesActivity extends AppCompatActivity implements Compare
     public void passSpinners(Spinner firstMatchSpinner, Spinner secondMatchSpinner) {
         this.firstMatchSpinner = firstMatchSpinner;
         this.secondMatchSpinner = secondMatchSpinner;
+    }
+
+    @Override
+    public void compareGames() {
+
     }
 }

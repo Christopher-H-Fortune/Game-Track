@@ -24,6 +24,7 @@ public class CompareMatchesFragment extends Fragment {
 
     public interface CompareMatchesFragmentInterface{
         void passSpinners(Spinner firstMatchSpinner, Spinner secondMatchSpinner);
+        void compareGames();
     }
 
     public static CompareMatchesFragment newInstance(){
@@ -50,7 +51,7 @@ public class CompareMatchesFragment extends Fragment {
         compareMatchesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                compareMatchesFragmentInterfaceListener.compareGames();
             }
         });
 
