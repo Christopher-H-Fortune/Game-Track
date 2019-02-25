@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.fullsail.christopherfortune.gametrack.CompareMatchesDetailsActivity.CompareMatchesDetailsActivity;
 import com.fullsail.christopherfortune.gametrack.CompareMatchesFragment.CompareMatchesFragment;
 import com.fullsail.christopherfortune.gametrack.MatchClass.Matches;
 import com.fullsail.christopherfortune.gametrack.R;
@@ -41,6 +42,7 @@ public class CompareMatchesActivity extends AppCompatActivity implements Compare
         setContentView(R.layout.activity_compare_matches);
 
         spinnerArrayList = new ArrayList<>();
+        matchesDatesArrayList = new ArrayList<>();
 
         // Get the starting intent
         Intent startingIntent = getIntent();
@@ -154,5 +156,21 @@ public class CompareMatchesActivity extends AppCompatActivity implements Compare
     @Override
     public void compareGames() {
 
+        // Get the first match date
+        String firstMatchDate = matchesDatesArrayList.get(firstMatchChosen);
+
+        // Get second match date
+        String secondMatchDate = matchesDatesArrayList.get(secondMatchChosen);
+
+        // Intent to send the user to the compare details
+        Intent compareDetailsIntent = new Intent(this, CompareMatchesDetailsActivity.class);
+
+        // Attach the data to the intent to pass to the compare details
+        compareDetailsIntent.putExtra("gameChosen", gameChosen);
+        compareDetailsIntent.putExtra("firstMatchDate", firstMatchDate);
+        compareDetailsIntent.putExtra("secondMatchDate", secondMatchDate);
+
+        // Start the activity with the intent created above
+        startActivity(compareDetailsIntent);
     }
 }

@@ -19,7 +19,7 @@ public class CompareMatchesFragment extends Fragment {
 
     public CompareMatchesFragmentInterface compareMatchesFragmentInterfaceListener;
 
-    // String variable to reference the AddGameFragment when displaying
+    // String variable to reference the CompareMatchesFragment when displaying
     public static final String TAG = "CompareMatchesFragment.TAG";
 
     public interface CompareMatchesFragmentInterface{

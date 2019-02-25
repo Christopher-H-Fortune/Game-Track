@@ -28,14 +28,19 @@
         <activity
             android:name=".AddGameActivity.AddGameActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MatchListActivity.MatchListActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".AddMatchActivity.AddMatchActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".SelectedMatchActivity.SelectedMatchActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".CompareMatchesActivity.CompareMatchesActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".MatchListActivity.MatchListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddMatchActivity.AddMatchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SelectedMatchActivity.SelectedMatchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CompareMatchesActivity.CompareMatchesActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CompareMatchesDetailsActivity.CompareMatchesDetailsActivity"></activity>
     </application>
 
 </manifest>
