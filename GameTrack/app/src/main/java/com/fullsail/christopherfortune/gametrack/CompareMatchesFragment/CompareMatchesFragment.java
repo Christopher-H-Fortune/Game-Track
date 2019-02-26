@@ -17,7 +17,7 @@ public class CompareMatchesFragment extends Fragment {
     private Spinner firstMatchSpinner;
     private Spinner secondMatchSpinner;
 
-    public CompareMatchesFragmentInterface compareMatchesFragmentInterfaceListener;
+    private CompareMatchesFragmentInterface compareMatchesFragmentInterfaceListener;
 
     // String variable to reference the CompareMatchesFragment when displaying
     public static final String TAG = "CompareMatchesFragment.TAG";

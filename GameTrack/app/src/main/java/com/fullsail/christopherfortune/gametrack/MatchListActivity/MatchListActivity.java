@@ -1,6 +1,5 @@
 package com.fullsail.christopherfortune.gametrack.MatchListActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,11 +8,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-import com.fullsail.christopherfortune.gametrack.AddGameActivity.AddGameActivity;
 import com.fullsail.christopherfortune.gametrack.AddMatchActivity.AddMatchActivity;
-import com.fullsail.christopherfortune.gametrack.AddMatchFragment.AddMatchFragment;
 import com.fullsail.christopherfortune.gametrack.CompareMatchesActivity.CompareMatchesActivity;
-import com.fullsail.christopherfortune.gametrack.GameClass.Games;
 import com.fullsail.christopherfortune.gametrack.MatchClass.Matches;
 import com.fullsail.christopherfortune.gametrack.MatchListClass.MatchesListClass;
 import com.fullsail.christopherfortune.gametrack.MatchListFragment.MatchListAdapter;
@@ -27,19 +23,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.perf.metrics.AddTrace;
 
 import java.util.ArrayList;
 
 public class MatchListActivity extends AppCompatActivity implements MatchListFragment.MatchListFragmentInterface {
 
-    public String gameChosen;
-    public FirebaseAuth mAuth;
-    public DatabaseReference mDatabaseReference;
-    public FirebaseDatabase mFirebaseDatabase;
-    public ArrayList<MatchesListClass> matchesArrayList = new ArrayList<>();
-    public ListView matchesListView;
+    private String gameChosen;
+    private final ArrayList<MatchesListClass> matchesArrayList = new ArrayList<>();
+    private ListView matchesListView;
 
     @Override
+    @AddTrace(name = "onCreateMatchListTrace")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_list);
@@ -53,8 +48,8 @@ public class MatchListActivity extends AppCompatActivity implements MatchListFra
         }
 
         // Set the instance of the Firebase auth and database
-        mAuth = FirebaseAuth.getInstance();
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
 
         // Get the current user signed in
         final FirebaseUser user = mAuth.getCurrentUser();
@@ -66,7 +61,7 @@ public class MatchListActivity extends AppCompatActivity implements MatchListFra
             final String uId = user.getUid();
 
             // Set the database reference using the mFirebaseDatabase
-            mDatabaseReference = mFirebaseDatabase.getReference("/users/" + uId + "/games/" + gameChosen + "/matches");
+            DatabaseReference mDatabaseReference = mFirebaseDatabase.getReference("/users/" + uId + "/games/" + gameChosen + "/matches");
 
             mDatabaseReference.addValueEventListener(new ValueEventListener() {
                 @Override

@@ -1,7 +1,5 @@
 package com.fullsail.christopherfortune.gametrack.MatchListClass;
 
-import com.fullsail.christopherfortune.gametrack.MatchClass.Matches;
-
 public class MatchesListClass {
 
     private String mapName;

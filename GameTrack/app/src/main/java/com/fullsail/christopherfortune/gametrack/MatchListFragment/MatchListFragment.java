@@ -20,7 +20,7 @@ public class MatchListFragment extends ListFragment {
     public static final String TAG = "MatchListFragment.TAG";
 
     // Variable to call the GamesListFragmentInterface methods
-    public MatchListFragmentInterface matchListFragmentInterfaceListener;
+    private MatchListFragmentInterface matchListFragmentInterfaceListener;
 
     public interface MatchListFragmentInterface{
         void passListView(ListView matchListView);

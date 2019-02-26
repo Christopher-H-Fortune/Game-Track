@@ -15,7 +15,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ServerValue;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,8 +23,8 @@ import java.util.Date;
 
 public class AddMatchActivity extends AppCompatActivity implements AddMatchFragment.AddMatchFragmentInterface {
 
-    public FirebaseAuth mAuth;
-    public FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase mFirebaseDatabase;
     private String gameChosen;
 
     @Override

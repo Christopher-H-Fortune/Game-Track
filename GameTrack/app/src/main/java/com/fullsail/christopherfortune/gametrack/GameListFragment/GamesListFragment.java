@@ -21,7 +21,7 @@ public class GamesListFragment extends ListFragment {
     public static final String TAG = "GamesListFragment.TAG";
 
     // Variable to call the GamesListFragmentInterface methods
-    public GamesListFragmentInterface gamesListFragmentInterfaceListener;
+    private GamesListFragmentInterface gamesListFragmentInterfaceListener;
 
     public interface GamesListFragmentInterface{
         void addGame();

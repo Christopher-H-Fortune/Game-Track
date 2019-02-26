@@ -7,10 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.fullsail.christopherfortune.gametrack.MatchClass.Matches;
 import com.fullsail.christopherfortune.gametrack.MatchListClass.MatchesListClass;
 import com.fullsail.christopherfortune.gametrack.R;
 
@@ -18,9 +16,9 @@ import java.util.ArrayList;
 
 public class MatchListAdapter extends ArrayAdapter<MatchesListClass> {
 
-    private Context context;
-    private int resource;
-    private ArrayList<MatchesListClass> matchesArrayList;
+    private final Context context;
+    private final int resource;
+    private final ArrayList<MatchesListClass> matchesArrayList;
 
     public MatchListAdapter(Context context, int resource, ArrayList<MatchesListClass> matchesArrayList){
         super(context, resource, matchesArrayList);

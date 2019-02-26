@@ -25,16 +25,14 @@ import java.util.ArrayList;
 
 public class CompareMatchesActivity extends AppCompatActivity implements CompareMatchesFragment.CompareMatchesFragmentInterface {
 
-    public String gameChosen;
-    public FirebaseAuth mAuth;
-    public DatabaseReference mDatabaseReference;
-    public FirebaseDatabase mFirebaseDatabase;
-    public ArrayList<String> spinnerArrayList;
-    public ArrayList<String> matchesDatesArrayList;
-    public Spinner firstMatchSpinner;
-    public Spinner secondMatchSpinner;
-    public int firstMatchChosen;
-    public int secondMatchChosen;
+    private String gameChosen;
+    private DatabaseReference mDatabaseReference;
+    private ArrayList<String> spinnerArrayList;
+    private ArrayList<String> matchesDatesArrayList;
+    private Spinner firstMatchSpinner;
+    private Spinner secondMatchSpinner;
+    private int firstMatchChosen;
+    private int secondMatchChosen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +53,8 @@ public class CompareMatchesActivity extends AppCompatActivity implements Compare
         }
 
         // Set the instance of the Firebase auth and database
-        mAuth = FirebaseAuth.getInstance();
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
 
         // Get the current user signed in
         final FirebaseUser user = mAuth.getCurrentUser();

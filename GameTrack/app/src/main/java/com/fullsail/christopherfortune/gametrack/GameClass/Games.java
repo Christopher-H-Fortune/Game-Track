@@ -2,11 +2,11 @@ package com.fullsail.christopherfortune.gametrack.GameClass;
 
 public class Games {
 
-    String gameTitle;
-    String gameDeveloper;
-    String gamePublisher;
-    String gameReleaseYear;
-    String gameLauncher;
+    private String gameTitle;
+    private String gameDeveloper;
+    private String gamePublisher;
+    private String gameReleaseYear;
+    private String gameLauncher;
 
     public Games(){
     }

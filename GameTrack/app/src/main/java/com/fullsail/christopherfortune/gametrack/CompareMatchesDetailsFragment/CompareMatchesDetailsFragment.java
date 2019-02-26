@@ -15,27 +15,31 @@ import com.fullsail.christopherfortune.gametrack.R;
 
 public class CompareMatchesDetailsFragment extends Fragment {
 
-    TextView matchesComparedTitleTextView;
-    TextView killDiffTextView;
-    TextView assistDiffTextView;
-    TextView scoreDiffTextView;
-    EditText firstMainWeaponEditText;
-    EditText secondMainWeaponEditText;
-    EditText firstSecondaryWeaponEditText;
-    EditText secondSecondaryWeaponEditText;
-    EditText firstGrenadesEditText;
-    EditText secondGrenadesEditText;
-    EditText firstWinLossEditText;
-    EditText secondWinLossEditText;
+    private TextView matchesComparedTitleTextView;
+    private TextView firstMapNameTextView;
+    private TextView secondMapNameTextView;
+    private TextView killDiffTextView;
+    private TextView assistDiffTextView;
+    private TextView scoreDiffTextView;
+    private EditText firstMainWeaponEditText;
+    private EditText secondMainWeaponEditText;
+    private EditText firstSecondaryWeaponEditText;
+    private EditText secondSecondaryWeaponEditText;
+    private EditText firstGrenadesEditText;
+    private EditText secondGrenadesEditText;
+    private EditText firstWinLossEditText;
+    private EditText secondWinLossEditText;
 
     // String variable to reference the CompareMatchesDetailsFragment when displaying
     public static final String TAG = "CompareMatchesDetailsFragment.TAG";
 
-    public static CompareMatchesDetailsFragmentInterface compareMatchesDetailsFragmentInterfaceListener;
+    private static CompareMatchesDetailsFragmentInterface compareMatchesDetailsFragmentInterfaceListener;
 
     public interface CompareMatchesDetailsFragmentInterface{
         void passViews(TextView matchesComparedTitleTextView,
                 TextView killDiffTextView,
+                TextView firstMapNameTextView,
+                TextView secondMapNameTextView,
                 TextView assistDiffTextView,
                 TextView scoreDiffTextView,
                 EditText firstMainWeaponEditText,
@@ -68,6 +72,8 @@ public class CompareMatchesDetailsFragment extends Fragment {
         View compareMatchesDetailsFragmentView = inflater.inflate(R.layout.fragment_compare_matches_details, container, false);
 
         matchesComparedTitleTextView = compareMatchesDetailsFragmentView.findViewById(R.id.matches_compared_title_text_view);
+        firstMapNameTextView = compareMatchesDetailsFragmentView.findViewById(R.id.first_map_name_text_view);
+        secondMapNameTextView = compareMatchesDetailsFragmentView.findViewById(R.id.second_map_name_text_view);
         killDiffTextView = compareMatchesDetailsFragmentView.findViewById(R.id.kill_difference_text_view);
         assistDiffTextView = compareMatchesDetailsFragmentView.findViewById(R.id.assists_difference_text_view);
         scoreDiffTextView = compareMatchesDetailsFragmentView.findViewById(R.id.score_difference_text_view);
@@ -90,6 +96,8 @@ public class CompareMatchesDetailsFragment extends Fragment {
         setHasOptionsMenu(true);
 
         compareMatchesDetailsFragmentInterfaceListener.passViews(matchesComparedTitleTextView,
+                firstMapNameTextView,
+                secondMapNameTextView,
                 killDiffTextView,
                 assistDiffTextView,
                 scoreDiffTextView,

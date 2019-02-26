@@ -23,8 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity implements LoginFragment.LoginFragmentInterface, SignUpFragment.SignUpFragmentInterface {
 
-    public FirebaseAuth mAuth;
-    public FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase mFirebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

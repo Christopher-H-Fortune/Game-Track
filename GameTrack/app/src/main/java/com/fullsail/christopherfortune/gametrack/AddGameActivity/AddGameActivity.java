@@ -16,8 +16,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class AddGameActivity extends AppCompatActivity implements AddGameFragment.AddGameFragmentInterface {
 
-    public FirebaseAuth mAuth;
-    public FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase mFirebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

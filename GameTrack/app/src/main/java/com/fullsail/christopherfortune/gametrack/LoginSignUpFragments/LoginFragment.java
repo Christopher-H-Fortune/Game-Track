@@ -19,7 +19,7 @@ public class LoginFragment extends Fragment {
     public static final String TAG = "LoginFragment.TAG";
 
     // LoginFragmentInterface variable to call the interface methods
-    public LoginFragmentInterface loginFragmentInterfaceListener;
+    private LoginFragmentInterface loginFragmentInterfaceListener;
 
     public interface LoginFragmentInterface{
         void login(EditText emailEditText, EditText passwordEditText);

@@ -22,7 +22,7 @@ public class AddGameFragment extends Fragment {
     public static final String TAG = "AddGameFragment.TAG";
 
     // Variable to call the AddGameFragmentInterface methods
-    public AddGameFragmentInterface addGameFragmentInterfaceListener;
+    private AddGameFragmentInterface addGameFragmentInterfaceListener;
 
     private EditText gameTitleEditText;
     private EditText gameDeveloperEditText;

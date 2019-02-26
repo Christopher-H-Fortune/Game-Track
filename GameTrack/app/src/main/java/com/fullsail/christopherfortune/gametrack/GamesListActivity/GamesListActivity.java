@@ -23,11 +23,8 @@ import java.util.HashMap;
 
 public class GamesListActivity extends AppCompatActivity implements GamesListFragment.GamesListFragmentInterface {
 
-    public FirebaseAuth mAuth;
-    public DatabaseReference mDatabaseReference;
-    public FirebaseDatabase mFirebaseDatabase;
-    public ArrayList<String> gamesArrayList = new ArrayList<>();
-    public ListView gamesListView;
+    private final ArrayList<String> gamesArrayList = new ArrayList<>();
+    private ListView gamesListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +33,8 @@ public class GamesListActivity extends AppCompatActivity implements GamesListFra
         setTitle("Welcome!");
 
         // Set the instance of the Firebase auth and database
-        mAuth = FirebaseAuth.getInstance();
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
 
         // Get the current user signed in
         final FirebaseUser user = mAuth.getCurrentUser();
@@ -49,7 +46,7 @@ public class GamesListActivity extends AppCompatActivity implements GamesListFra
             final String uId = user.getUid();
 
             // Set the database reference using the mFirebaseDatabase
-            mDatabaseReference = mFirebaseDatabase.getReference("/users/"+ uId + "/games");
+            DatabaseReference mDatabaseReference = mFirebaseDatabase.getReference("/users/" + uId + "/games");
 
             // Set the database to have a ValueEventListener to display the games data to the user
             mDatabaseReference.addValueEventListener(new ValueEventListener() {

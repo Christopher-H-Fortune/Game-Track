@@ -18,7 +18,7 @@ public class SelectedMatchFragment extends Fragment {
     // String variable to reference the AddGameFragment when displaying
     public static final String TAG = "SelectedMatchFragment.TAG";
 
-    public SelectedMatchFragmentInterface selectedMatchFragmentInterfaceListener;
+    private SelectedMatchFragmentInterface selectedMatchFragmentInterfaceListener;
 
     public interface SelectedMatchFragmentInterface{
         void passDataViews(TextView mapNameTextView,

@@ -4,12 +4,10 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.fullsail.christopherfortune.gametrack.MatchClass.Matches;
-import com.fullsail.christopherfortune.gametrack.MatchListClass.MatchesListClass;
 import com.fullsail.christopherfortune.gametrack.R;
 import com.fullsail.christopherfortune.gametrack.SelectedMatchFragment.SelectedMatchFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,22 +20,22 @@ import com.google.firebase.database.ValueEventListener;
 
 public class SelectedMatchActivity extends AppCompatActivity implements SelectedMatchFragment.SelectedMatchFragmentInterface {
 
-    public String gameChosen;
-    public String matchDate;
-    public FirebaseAuth mAuth;
-    public DatabaseReference mDatabaseReference;
-    public FirebaseDatabase mFirebaseDatabase;
-    public Matches matchChosen;
-    public TextView mapNameTextView;
-    public TextView matchDateTextView;
-    public TextView matchAssistTextView;
-    public TextView matchKillsTextView;
-    public TextView matchScoreTextView;
-    public EditText mainWeaponEditText;
-    public EditText secondaryEditText;
-    public EditText grenadesEditText;
-    public EditText winLossEditText;
-    public EditText matchNotesEditText;
+    private String gameChosen;
+    private String matchDate;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabaseReference;
+    private FirebaseDatabase mFirebaseDatabase;
+    private Matches matchChosen;
+    private TextView mapNameTextView;
+    private TextView matchDateTextView;
+    private TextView matchAssistTextView;
+    private TextView matchKillsTextView;
+    private TextView matchScoreTextView;
+    private EditText mainWeaponEditText;
+    private EditText secondaryEditText;
+    private EditText grenadesEditText;
+    private EditText winLossEditText;
+    private EditText matchNotesEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,7 +140,7 @@ public class SelectedMatchActivity extends AppCompatActivity implements Selected
         this.matchNotesEditText = matchNotesEditText;
     }
 
-    public void displayData(){
+    private void displayData(){
         if(matchChosen != null){
 
             if(mapNameTextView != null){

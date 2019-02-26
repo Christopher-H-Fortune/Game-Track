@@ -21,7 +21,7 @@ public class AddMatchFragment extends Fragment {
     public static final String TAG = "AddMatchFragment.TAG";
 
     // Variable to call the GamesListFragmentInterface methods
-    public AddMatchFragmentInterface addMatchFragmentInterfaceListener;
+    private AddMatchFragmentInterface addMatchFragmentInterfaceListener;
 
     private RadioButton winRadioButton;
     private RadioButton loseRadioButton;
