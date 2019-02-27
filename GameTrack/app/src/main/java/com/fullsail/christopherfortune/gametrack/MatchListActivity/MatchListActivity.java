@@ -9,7 +9,9 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.fullsail.christopherfortune.gametrack.AddMatchActivity.AddMatchActivity;
+import com.fullsail.christopherfortune.gametrack.CareerActivity.CareerActivity;
 import com.fullsail.christopherfortune.gametrack.CompareMatchesActivity.CompareMatchesActivity;
+import com.fullsail.christopherfortune.gametrack.GamesListActivity.GamesListActivity;
 import com.fullsail.christopherfortune.gametrack.MatchClass.Matches;
 import com.fullsail.christopherfortune.gametrack.MatchListClass.MatchesListClass;
 import com.fullsail.christopherfortune.gametrack.MatchListFragment.MatchListAdapter;
@@ -114,6 +116,16 @@ public class MatchListActivity extends AppCompatActivity implements MatchListFra
                 }
             });
 
+            ImageButton careerImageButton = findViewById(R.id.career_image_button);
+            careerImageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent careerIntent = new Intent(MatchListActivity.this, CareerActivity.class);
+                    careerIntent.putExtra("gameChosen", gameChosen);
+                    startActivity(careerIntent);
+                }
+            });
+
         }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.match_list_frame_layout, MatchListFragment.newInstance(), MatchListFragment.TAG).commit();
@@ -144,6 +156,13 @@ public class MatchListActivity extends AppCompatActivity implements MatchListFra
         selectedMatchIntent.putExtra("gameChosen", gameChosen);
         selectedMatchIntent.putExtra("matchChosenDate", matchesArrayList.get(matchChosen).getDate());
         startActivity(selectedMatchIntent);
+    }
+
+    @Override
+    public void goBack() {
+
+        Intent goBackIntent = new Intent(this, GamesListActivity.class);
+        startActivity(goBackIntent);
     }
 
     private void updateMatchesList(){

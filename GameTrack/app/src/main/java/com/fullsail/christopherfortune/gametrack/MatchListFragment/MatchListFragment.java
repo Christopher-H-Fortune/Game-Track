@@ -26,6 +26,7 @@ public class MatchListFragment extends ListFragment {
         void passListView(ListView matchListView);
         void addMatch();
         void viewMatch(int matchChosen);
+        void goBack();
     }
 
     public static MatchListFragment newInstance(){
@@ -87,6 +88,10 @@ public class MatchListFragment extends ListFragment {
 
             // Call the addMatch interface method
             matchListFragmentInterfaceListener.addMatch();
+        } else if(item.getItemId() == R.id.done_match_list_button){
+
+            // Call the goBack interface method
+            matchListFragmentInterfaceListener.goBack();
         }
 
         return true;

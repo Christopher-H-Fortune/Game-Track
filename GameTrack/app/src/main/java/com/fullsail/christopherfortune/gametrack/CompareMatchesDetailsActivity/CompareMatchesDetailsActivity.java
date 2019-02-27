@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.fullsail.christopherfortune.gametrack.CompareMatchesActivity.CompareMatchesActivity;
 import com.fullsail.christopherfortune.gametrack.CompareMatchesDetailsFragment.CompareMatchesDetailsFragment;
 import com.fullsail.christopherfortune.gametrack.MatchClass.Matches;
 import com.fullsail.christopherfortune.gametrack.R;
@@ -154,30 +155,45 @@ public class CompareMatchesDetailsActivity extends AppCompatActivity implements 
             matchesComparedTitleTextView.setText(getString(R.string.compare_title, firstMatch.getMapName(), secondMatch.getMapName()));
         }
 
-        if(killDiffTextView != null){
-
-            int killDiff = firstMatch.getKills() - secondMatch.getKills();
-            killDiffTextView.setText(getString(R.string.compare_kills, killDiff));
-        }
-
-        if(assistDiffTextView != null){
-
-            int assistDiff = firstMatch.getMatchAssists() - secondMatch.getMatchAssists();
-            assistDiffTextView.setText(getString(R.string.assist_text_view, assistDiff));
-        }
-
-        if(scoreDiffTextView != null){
-
-            int scoreDiff = firstMatch.getMatchScore() - secondMatch.getMatchScore();
-            scoreDiffTextView.setText(getString(R.string.score_text_view, scoreDiff));
-        }
-
         if(firstMapNameTextView != null){
             firstMapNameTextView.setText(firstMatch.getMapName());
         }
 
         if(secondMapNameTextView != null){
             secondMapNameTextView.setText(secondMatch.getMapName());
+        }
+
+        if(killDiffTextView != null){
+
+            int killDiff = firstMatch.getKills() - secondMatch.getKills();
+
+            if(killDiff >= 0){
+                killDiffTextView.setText(getString(R.string.compare_kills_positive, killDiff));
+            } else {
+                killDiffTextView.setText(getString(R.string.compare_kills, killDiff));
+            }
+        }
+
+        if(assistDiffTextView != null){
+
+            int assistDiff = firstMatch.getMatchAssists() - secondMatch.getMatchAssists();
+
+            if(assistDiff >= 0){
+                assistDiffTextView.setText(getString(R.string.compare_assist_positive, assistDiff));
+            } else {
+                assistDiffTextView.setText(getString(R.string.assist_text_view, assistDiff));
+            }
+        }
+
+        if(scoreDiffTextView != null){
+
+            int scoreDiff = firstMatch.getMatchScore() - secondMatch.getMatchScore();
+
+            if(scoreDiff >= 0){
+                scoreDiffTextView.setText(getString(R.string.compare_score_positive, scoreDiff));
+            } else {
+                scoreDiffTextView.setText(getString(R.string.score_text_view, scoreDiff));
+            }
         }
 
         if(firstMainWeaponEditText != null){
@@ -221,8 +237,9 @@ public class CompareMatchesDetailsActivity extends AppCompatActivity implements 
         }
     }
 
+
     @Override
-    public void passViews(TextView matchesComparedTitleTextView, TextView killDiffTextView, TextView firstMapNameTextView, TextView secondMapNameTextView, TextView assistDiffTextView, TextView scoreDiffTextView, EditText firstMainWeaponEditText, EditText secondMainWeaponEditText, EditText firstSecondaryWeaponEditText, EditText secondSecondaryWeaponEditText, EditText firstGrenadesEditText, EditText secondGrenadesEditText, EditText firstWinLossEditText, EditText secondWinLossEditText) {
+    public void passViews(TextView matchesComparedTitleTextView, TextView firstMapNameTextView, TextView secondMapNameTextView, TextView killDiffTextView, TextView assistDiffTextView, TextView scoreDiffTextView, EditText firstMainWeaponEditText, EditText secondMainWeaponEditText, EditText firstSecondaryWeaponEditText, EditText secondSecondaryWeaponEditText, EditText firstGrenadesEditText, EditText secondGrenadesEditText, EditText firstWinLossEditText, EditText secondWinLossEditText) {
         this.matchesComparedTitleTextView = matchesComparedTitleTextView;
         this.firstMapNameTextView = firstMapNameTextView;
         this.secondMapNameTextView = secondMapNameTextView;
@@ -237,5 +254,12 @@ public class CompareMatchesDetailsActivity extends AppCompatActivity implements 
         this.secondGrenadesEditText = secondGrenadesEditText;
         this.firstWinLossEditText = firstWinLossEditText;
         this.secondWinLossEditText = secondWinLossEditText;
+    }
+
+    @Override
+    public void doneComparing() {
+        Intent goBackIntent = new Intent(this, CompareMatchesActivity.class);
+        goBackIntent.putExtra("gameChosen", gameChosen);
+        startActivity(goBackIntent);
     }
 }

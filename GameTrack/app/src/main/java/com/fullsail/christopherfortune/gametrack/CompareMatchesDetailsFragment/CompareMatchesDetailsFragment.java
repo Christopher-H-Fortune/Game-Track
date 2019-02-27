@@ -6,6 +6,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -37,9 +40,9 @@ public class CompareMatchesDetailsFragment extends Fragment {
 
     public interface CompareMatchesDetailsFragmentInterface{
         void passViews(TextView matchesComparedTitleTextView,
-                TextView killDiffTextView,
-                TextView firstMapNameTextView,
-                TextView secondMapNameTextView,
+                       TextView firstMapNameTextView,
+                       TextView secondMapNameTextView,
+                       TextView killDiffTextView,
                 TextView assistDiffTextView,
                 TextView scoreDiffTextView,
                 EditText firstMainWeaponEditText,
@@ -50,6 +53,7 @@ public class CompareMatchesDetailsFragment extends Fragment {
                 EditText secondGrenadesEditText,
                 EditText firstWinLossEditText,
                 EditText secondWinLossEditText);
+        void doneComparing();
     }
 
     public static CompareMatchesDetailsFragment newInstance(){
@@ -72,8 +76,8 @@ public class CompareMatchesDetailsFragment extends Fragment {
         View compareMatchesDetailsFragmentView = inflater.inflate(R.layout.fragment_compare_matches_details, container, false);
 
         matchesComparedTitleTextView = compareMatchesDetailsFragmentView.findViewById(R.id.matches_compared_title_text_view);
-        firstMapNameTextView = compareMatchesDetailsFragmentView.findViewById(R.id.first_map_name_text_view);
-        secondMapNameTextView = compareMatchesDetailsFragmentView.findViewById(R.id.second_map_name_text_view);
+        firstMapNameTextView = compareMatchesDetailsFragmentView.findViewById(R.id.first_map_name_compare_text_view);
+        secondMapNameTextView = compareMatchesDetailsFragmentView.findViewById(R.id.second_map_name_compare_text_view);
         killDiffTextView = compareMatchesDetailsFragmentView.findViewById(R.id.kill_difference_text_view);
         assistDiffTextView = compareMatchesDetailsFragmentView.findViewById(R.id.assists_difference_text_view);
         scoreDiffTextView = compareMatchesDetailsFragmentView.findViewById(R.id.score_difference_text_view);
@@ -109,5 +113,21 @@ public class CompareMatchesDetailsFragment extends Fragment {
                 secondGrenadesEditText,
                 firstWinLossEditText,
                 secondWinLossEditText);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.compare_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId() == R.id.done_compare_menu_button){
+            compareMatchesDetailsFragmentInterfaceListener.doneComparing();
+        }
+
+        return true;
     }
 }

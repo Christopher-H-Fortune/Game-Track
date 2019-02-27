@@ -52,4 +52,15 @@
     <string name="compare_matches">Compare Matches</string>
     <string name="compare_title">%1$s vs. %2$s</string>
     <string name="compare_kills">%1$d K.I.A</string>
+    <string name="compare_kills_positive">+%1$d K.I.A</string>
+    <string name="compare_assist_positive">+%1$d Assists</string>
+    <string name="compare_score_positive">+%1$d Score</string>
+    <string name="done">Done</string>
+    <string name="main_weapon_used_the_most">Main Weapon Used the Most</string>
+    <string name="secondary_weapon_used_the_most">Secondary Weapon Used the Most</string>
+    <string name="career_losses">Career Losses</string>
+    <string name="career_wins">Career Wins</string>
+    <string name="career_title">%1$s Career</string>
+    <string name="win_count">%1$d Wins</string>
+    <string name="loss_count">%1$d Losses</string>
 </resources>

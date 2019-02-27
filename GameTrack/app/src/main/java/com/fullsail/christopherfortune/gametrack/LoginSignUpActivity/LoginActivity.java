@@ -80,44 +80,44 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
             passwordEditText.setText(null);
         }
 
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+        if(!password.isEmpty() && !email.isEmpty()){
 
-                // If login was successful
-                if(task.isSuccessful()){
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
 
-                    // Display the message to the user
-                    Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-
-                    // Get the current user signed in
-                    FirebaseUser user = mAuth.getCurrentUser();
-
-                    // If the user isn't null
-                    if(user != null) {
-
-                        // Get the userID
-                        String userID = user.getUid();
-
-                        // Send the user to the GamesListActivity
-                        Intent gamesListIntent = new Intent(LoginActivity.this, GamesListActivity.class);
-
-                        // Start the games list activity
-                        startActivity(gamesListIntent);
-                    }
-
-                // If the login wasn't successful
-                } else {
-
-                    // IF the exception isn't null
-                    if(task.getException() != null){
+                    // If login was successful
+                    if(task.isSuccessful()){
 
                         // Display the message to the user
-                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+
+                        // Get the current user signed in
+                        FirebaseUser user = mAuth.getCurrentUser();
+
+                        // If the user isn't null
+                        if(user != null) {
+
+                            // Send the user to the GamesListActivity
+                            Intent gamesListIntent = new Intent(LoginActivity.this, GamesListActivity.class);
+
+                            // Start the games list activity
+                            startActivity(gamesListIntent);
+                        }
+
+                        // If the login wasn't successful
+                    } else {
+
+                        // IF the exception isn't null
+                        if(task.getException() != null){
+
+                            // Display the message to the user
+                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
     }
 
     @Override
@@ -187,10 +187,12 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
             verifyPasswordEditText.setText(null);
         }
 
-        // If all the conditionals are met, create the users account
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+        if(!email.isEmpty() && !password.isEmpty() && !verifyPassword.isEmpty()){
+
+            // If all the conditionals are met, create the users account
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
 
                 // If the account was created
                 if(task.isSuccessful()){
@@ -203,64 +205,65 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
-                            // If login was successful
-                            if(task.isSuccessful()){
+                        // If login was successful
+                        if(task.isSuccessful()){
 
-                                // Display the message to the user
-                                Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                            // Display the message to the user
+                            Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
 
-                                // Get the current user signed in
-                                FirebaseUser user = mAuth.getCurrentUser();
+                            // Get the current user signed in
+                            FirebaseUser user = mAuth.getCurrentUser();
 
-                                // If the user isn't null
-                                if(user != null){
+                            // If the user isn't null
+                            if(user != null){
 
-                                    // Get the userID
-                                    String userID = user.getUid();
+                                // Get the userID
+                                String userID = user.getUid();
 
-                                    // Set a reference to our Firebase database
-                                    DatabaseReference databaseReference = mFirebaseDatabase.getReference();
+                                // Set a reference to our Firebase database
+                                DatabaseReference databaseReference = mFirebaseDatabase.getReference();
 
-                                    // Create the user's profile in the database using the user's id
-                                    databaseReference.child("users").child(userID).setValue(userID);
+                                // Create the user's profile in the database using the user's id
+                                databaseReference.child("users").child(userID).setValue(userID);
 
-                                    // Send the user to the GamesListActivity
-                                    Intent gamesListIntent = new Intent(LoginActivity.this, GamesListActivity.class);
+                                // Send the user to the GamesListActivity
+                                Intent gamesListIntent = new Intent(LoginActivity.this, GamesListActivity.class);
 
-                                    // Start the games list activity
-                                    startActivity(gamesListIntent);
-                                }
+                                // Start the games list activity
+                                startActivity(gamesListIntent);
+                            }
 
                             // If there was an error in creating the account
-                            } else {
+                        } else {
 
-                                // IF the exception isn't null
-                                if(task.getException() != null){
+                            // IF the exception isn't null
+                            if(task.getException() != null){
 
-                                    // If the user already exists
-                                    if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                                // If the user already exists
+                                if(task.getException() instanceof FirebaseAuthUserCollisionException){
 
-                                        // Display the message to the user
-                                        Toast.makeText(getApplicationContext(),"Account already created.", Toast.LENGTH_SHORT).show();
+                                    // Display the message to the user
+                                    Toast.makeText(getApplicationContext(),"Account already created.", Toast.LENGTH_SHORT).show();
 
                                     // Display message in error of creating user
-                                    } else {
-                                        // Display the message to the user
-                                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
+                                } else {
+                                    // Display the message to the user
+                                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }
+                        }
                     });
 
-                // If the account wasn't created
+                    // If the account wasn't created
                 } else {
 
                     // Ask the user to try again
                     Toast.makeText(getApplicationContext(), "Sign-Up failed. Pleas Try again.", Toast.LENGTH_SHORT).show();
                 }
 
-            }
-        });
+                }
+            });
+        }
     }
 }

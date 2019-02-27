@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
+import com.fullsail.christopherfortune.gametrack.CareerActivity.CareerActivity;
 import com.fullsail.christopherfortune.gametrack.CompareMatchesDetailsActivity.CompareMatchesDetailsActivity;
 import com.fullsail.christopherfortune.gametrack.CompareMatchesFragment.CompareMatchesFragment;
 import com.fullsail.christopherfortune.gametrack.MatchClass.Matches;
+import com.fullsail.christopherfortune.gametrack.MatchListActivity.MatchListActivity;
 import com.fullsail.christopherfortune.gametrack.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,6 +41,7 @@ public class CompareMatchesActivity extends AppCompatActivity implements Compare
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare_matches);
+        setTitle("Compare");
 
         spinnerArrayList = new ArrayList<>();
         matchesDatesArrayList = new ArrayList<>();
@@ -100,6 +104,26 @@ public class CompareMatchesActivity extends AppCompatActivity implements Compare
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        ImageButton matchListImageButton = findViewById(R.id.matches_list_image_button);
+        matchListImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent matchListIntent = new Intent(CompareMatchesActivity.this, MatchListActivity.class);
+                matchListIntent.putExtra("gameChosen", gameChosen);
+                startActivity(matchListIntent);
+            }
+        });
+
+        ImageButton careerImageButton = findViewById(R.id.career_image_button);
+        careerImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent careerIntent = new Intent(CompareMatchesActivity.this, CareerActivity.class);
+                careerIntent.putExtra("gameChosen", gameChosen);
+                startActivity(careerIntent);
             }
         });
 

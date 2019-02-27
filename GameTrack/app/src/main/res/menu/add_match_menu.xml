@@ -8,5 +8,10 @@
         android:icon="@drawable/ic_add_24dp"
         android:id="@+id/add_match_menu_button"/>
 
+    <item
+        android:title="@string/done"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_check_24dp"
+        android:id="@+id/done_match_list_button"/>
 
 </menu>

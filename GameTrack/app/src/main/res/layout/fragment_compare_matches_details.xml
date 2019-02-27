@@ -112,7 +112,7 @@
         app:layout_constraintTop_toBottomOf="@+id/assists_difference_text_view">
 
         <TextView
-            android:id="@+id/first_map_name_text_view"
+            android:id="@+id/first_map_name_compare_text_view"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -121,7 +121,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/second_map_name_text_view"
+            android:id="@+id/second_map_name_compare_text_view"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
