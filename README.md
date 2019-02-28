@@ -14,7 +14,7 @@
 
 ### Hardware Considerations ###
 
-* Currently, Taskify is set to run at a minimum SDK Version 21 and a compile SDK Version 28.
+* Currently, Game Track is set to run at a minimum SDK Version 21 and a compile SDK Version 28.
 
 ### List of Known Bugs ###
 
