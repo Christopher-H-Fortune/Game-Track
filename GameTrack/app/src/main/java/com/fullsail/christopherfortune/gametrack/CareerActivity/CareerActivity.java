@@ -46,6 +46,7 @@ public class CareerActivity extends AppCompatActivity implements CareerFragment.
 
             // Store the string extra passed from the intent
             gameChosen = startingIntent.getStringExtra("gameChosen");
+            setTitle(gameChosen + " Career");
         }
 
         // Set the instance of the Firebase auth and database
@@ -157,6 +158,8 @@ public class CareerActivity extends AppCompatActivity implements CareerFragment.
         int scoreTotal = 0;
         int careerWins = 0;
         int careerLosses = 0;
+        String matchLengthUnformatted = "";
+        int matchLengthTotal = 0;
 
         for(Matches match: careerMatchesArrayList){
 
@@ -169,11 +172,23 @@ public class CareerActivity extends AppCompatActivity implements CareerFragment.
             } else {
                 careerLosses += 1;
             }
+
+            String matchLength = match.getMatchLength();
+
+            if(matchLength.contains(":")){
+                matchLengthUnformatted = matchLength.replace(":", "");
+                int matchLengthInt = Integer.parseInt(matchLengthUnformatted);
+                matchLengthTotal += matchLengthInt;
+            } else {
+                int matchLengthInt = Integer.parseInt(matchLength);
+                matchLengthTotal += matchLengthInt;
+            }
         }
 
         int killsAverage = killsTotal / careerMatchesArrayList.size();
         int assistAverage = assistTotal / careerMatchesArrayList.size();
         int scoreAverage = scoreTotal / careerMatchesArrayList.size();
+        int matchLengthAverage = matchLengthTotal / careerMatchesArrayList.size();
 
         TextView gameCareerTitleTextView = findViewById(R.id.game_career_title_text_view);
         gameCareerTitleTextView.setText(getString(R.string.career_title, gameChosen));
@@ -198,6 +213,10 @@ public class CareerActivity extends AppCompatActivity implements CareerFragment.
         } else {
             careerScoreTextView.setText(getString(R.string.score_text_view, scoreAverage));
         }
+
+        EditText careerMatchLengthEditText = findViewById(R.id.career_match_length_edit_text);
+        String lengthAverageString = Integer.toString(matchLengthAverage);
+        careerMatchLengthEditText.setText(lengthAverageString);
 
         EditText careerWinsEditText = findViewById(R.id.career_wins_edit_text);
         careerWinsEditText.setText(getString(R.string.win_count, careerWins));
