@@ -18,7 +18,7 @@
 
 ### List of Known Bugs ###
 
-* Saving a match with empty data will cause a crash due to certain fields requiring a number.
+* No known bugs.
 
 ### Where to Find Milestones ###
 
@@ -56,5 +56,12 @@
 - Allows user to enter in a match object to store to the Firebase Database of the selected game.
 - Pressing save acition button allows the user to save the Match to the database and send the user back to the match list screen.
 
-** Compare Games Screen **
+** Compare Match Screen **
 - Allow user to select between two matches to compare their data.
+- After selecting two matches, the user can press compare.
+
+** Compare Match Details Screen **
+- Displays the compared match data to the user.
+
+** Career Screen **
+- Displays the selected game, players carrer.(Total kills, assists, etc.)
