@@ -6,7 +6,7 @@
 - https://github.com/Christopher-H-Fortune/Game-Track.git
 
 **Repo Link**
-- [Click here to view repo on BitBucket.org.](https://github.com/Christopher-H-Fortune/Game-Track)
+- [Click here to view repo on GitHub.com](https://github.com/Christopher-H-Fortune/Game-Track)
 
 ### Installation Instructions ###
 
