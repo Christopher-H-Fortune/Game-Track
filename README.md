@@ -1,6 +1,6 @@
 # Game Track #
 
-### Bitbucket Repository Link ###
+### GitHub Repository Link ###
 
 **Clone Link**
 - https://github.com/Christopher-H-Fortune/Game-Track.git
